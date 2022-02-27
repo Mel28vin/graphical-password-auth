@@ -1,6 +1,15 @@
 import { useRef, useState } from "react"
-import { Button, Card, Form, Alert } from "react-bootstrap"
+import {
+  Button,
+  Card,
+  Form,
+  Alert,
+  ToggleButton,
+  ButtonGroup,
+} from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
+
+let imagePattern: string[] = []
 
 const SignUp = () => {
   const emailRef = useRef<HTMLInputElement>()
@@ -8,21 +17,38 @@ const SignUp = () => {
   const passwordConfirmRef = useRef<HTMLInputElement>()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
-  const { signup, currentUser } = useAuth()
+  const [radioValue, setRadioValue] = useState("0")
+  const { signup } = useAuth()
+
+  const radios = [
+    { name: "Red", value: "1", variant: "danger" },
+    { name: "Green", value: "2", variant: "success" },
+    { name: "Blue", value: "3", variant: "primary" },
+  ]
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      imagePattern = []
+      setLoading(false)
       return setError("Passwords Do Not Match")
+    }
+    const colorPatternString = imagePattern.join("")
+    if (colorPatternString.length !== 12) {
+      imagePattern = []
+      setLoading(false)
+      return setError("Click every color once")
     }
     try {
       setError("")
       setLoading(true)
-      await signup(emailRef.current.value, passwordRef.current.value)
+      const completePassword = passwordRef.current.value + colorPatternString
+      await signup(emailRef.current.value, completePassword)
     } catch {
-      return setError("Failed to create an Account")
+      setError("Failed to create an Account")
     }
     setLoading(false)
+    imagePattern = []
   }
 
   return (
@@ -31,7 +57,6 @@ const SignUp = () => {
         <Card.Body>
           <h2 className="text-center mb-4"> Sign Up</h2>
           {error && <Alert variant="danger"> {error} </Alert>}
-          {currentUser && currentUser.email}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label> Email </Form.Label>
@@ -44,6 +69,28 @@ const SignUp = () => {
             <Form.Group id="password-confirm">
               <Form.Label> Password Confirmation </Form.Label>
               <Form.Control type="password" ref={passwordConfirmRef} required />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label> Image Pattern Password </Form.Label>
+              <ButtonGroup className="d-flex align-items-center justify-content-center w-70">
+                {radios.map((radio, idx) => (
+                  <ToggleButton
+                    key={radio.value}
+                    id={`radio-${idx}`}
+                    type="radio"
+                    variant={radio.variant}
+                    name={radio.name}
+                    value={radio.value}
+                    checked={radioValue === radio.value}
+                    onChange={(e) => {
+                      setRadioValue(e.currentTarget.value)
+                      imagePattern.push(e.currentTarget.name)
+                    }}
+                  >
+                    {radio.name}
+                  </ToggleButton>
+                ))}
+              </ButtonGroup>
             </Form.Group>
             <Button
               disabled={loading}
