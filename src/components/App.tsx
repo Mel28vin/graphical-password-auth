@@ -4,6 +4,7 @@ import { AuthProvider } from "../contexts/AuthContext"
 import Dashboard from "./Dashboard"
 import Signup from "./Signup"
 import Login from "./Login"
+import RequireUser from "./RequireUser"
 
 const App = () => {
   return (
@@ -15,7 +16,14 @@ const App = () => {
         <Router>
           <AuthProvider>
             <Routes>
-              <Route path="/" element={<Dashboard />} />
+              <Route
+                path="/"
+                element={
+                  <RequireUser redirectTo="/login">
+                    <Dashboard />
+                  </RequireUser>
+                }
+              />
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
             </Routes>
