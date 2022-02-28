@@ -9,8 +9,6 @@ import {
 } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 
-let imagePattern: string[] = []
-
 const SignUp = () => {
   const emailRef = useRef<HTMLInputElement>()
   const passwordRef = useRef<HTMLInputElement>()
@@ -18,6 +16,7 @@ const SignUp = () => {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const [radioValue, setRadioValue] = useState("0")
+  const [imagePatternValue, setImagePatternValue] = useState("")
   const { signup } = useAuth()
 
   const radios = [
@@ -29,26 +28,25 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      imagePattern = []
+      setImagePatternValue("")
       setLoading(false)
       return setError("Passwords Do Not Match")
     }
-    const colorPatternString = imagePattern.join("")
-    if (colorPatternString.length !== 12) {
-      imagePattern = []
+    if (imagePatternValue.length !== 12) {
+      setImagePatternValue("")
       setLoading(false)
       return setError("Click every color once")
     }
     try {
       setError("")
       setLoading(true)
-      const completePassword = passwordRef.current.value + colorPatternString
+      const completePassword = passwordRef.current.value + imagePatternValue
       await signup(emailRef.current.value, completePassword)
     } catch {
       setError("Failed to create an Account")
     }
     setLoading(false)
-    imagePattern = []
+    setImagePatternValue("")
   }
 
   return (
@@ -84,7 +82,9 @@ const SignUp = () => {
                     checked={radioValue === radio.value}
                     onChange={(e) => {
                       setRadioValue(e.currentTarget.value)
-                      imagePattern.push(e.currentTarget.name)
+                      setImagePatternValue(
+                        imagePatternValue + e.currentTarget.name
+                      )
                     }}
                   >
                     {radio.name}
