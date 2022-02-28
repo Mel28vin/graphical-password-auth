@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+  color: #333;
+}
+
+:root {
+  --mono: "Oxygen mono", monospace;
+  --sans: Oxygen, sans-serif;
+}
+
+.mono-font {
+  font-family: var(--mono);
+}
+
+.sans-font {
+  font-family: var(--sans);
+}
