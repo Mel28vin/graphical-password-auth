@@ -1,8 +1,8 @@
 {
   "name": "hackathon-project",
   "version": "0.1.0",
-  "private": false,
-  "homepage": "https://techwithsam.me",
+  "private": true,
+  "homepage": "https://techwithsam.me/graphical-password-auth/",
   "dependencies": {
     "bootstrap": "^5.1.3",
     "firebase": "^9.6.7",

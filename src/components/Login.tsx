@@ -38,7 +38,7 @@ const Login = () => {
       setLoading(true)
       const completePassword = passwordRef.current.value + imagePatternValue
       await login(emailRef.current.value, completePassword)
-      navigate("/")
+      navigate(`${process.env.REACT_APP_PUBLIC_URL}/`)
     } catch {
       setError("Failed to sign in")
     }
@@ -97,7 +97,8 @@ const Login = () => {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        Need an account? <Link to="/signup">Sign Up</Link>
+        Need an account?{" "}
+        <Link to={`${process.env.REACT_APP_PUBLIC_URL}/signup`}>Sign Up</Link>
       </div>
     </>
   )

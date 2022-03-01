@@ -44,7 +44,7 @@ const Signup = () => {
       setLoading(true)
       const completePassword = passwordRef.current.value + imagePatternValue
       await signup(emailRef.current.value, completePassword)
-      navigate("/")
+      navigate(`${process.env.REACT_APP_PUBLIC_URL}/`)
     } catch {
       setError("Failed to create an Account")
     }
@@ -107,7 +107,8 @@ const Signup = () => {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        Already have an account? <Link to="/login">Log In</Link>
+        Already have an account?{" "}
+        <Link to={`${process.env.REACT_APP_PUBLIC_URL}/login`}>Log In</Link>
       </div>
     </>
   )

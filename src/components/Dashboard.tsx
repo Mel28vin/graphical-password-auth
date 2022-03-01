@@ -12,7 +12,7 @@ const Dashboard = () => {
     setError("")
     try {
       await logout()
-      navigate("/login")
+      navigate(`${process.env.REACT_APP_PUBLIC_URL}/login`)
     } catch {
       setError("Failed to Logout")
     }

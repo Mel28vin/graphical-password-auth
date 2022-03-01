@@ -17,15 +17,23 @@ const App = () => {
           <AuthProvider>
             <Routes>
               <Route
-                path="/"
+                path={`${process.env.REACT_APP_PUBLIC_URL}/`}
                 element={
-                  <RequireUser redirectTo="/login">
+                  <RequireUser
+                    redirectTo={`${process.env.REACT_APP_PUBLIC_URL}/login`}
+                  >
                     <Dashboard />
                   </RequireUser>
                 }
               />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
+              <Route
+                path={`${process.env.REACT_APP_PUBLIC_URL}/signup`}
+                element={<Signup />}
+              />
+              <Route
+                path={`${process.env.REACT_APP_PUBLIC_URL}/login`}
+                element={<Login />}
+              />
             </Routes>
           </AuthProvider>
         </Router>
