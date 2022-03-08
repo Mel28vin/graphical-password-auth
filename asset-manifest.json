@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/graphical-password-auth/static/css/main.1a8a0596.css",
-    "main.js": "/graphical-password-auth/static/js/main.0a881f84.js",
+    "main.css": "/graphical-password-auth/static/css/main.895d8623.css",
+    "main.js": "/graphical-password-auth/static/js/main.a3046a19.js",
     "index.html": "/graphical-password-auth/index.html",
-    "main.1a8a0596.css.map": "/graphical-password-auth/static/css/main.1a8a0596.css.map",
-    "main.0a881f84.js.map": "/graphical-password-auth/static/js/main.0a881f84.js.map"
+    "main.895d8623.css.map": "/graphical-password-auth/static/css/main.895d8623.css.map",
+    "main.a3046a19.js.map": "/graphical-password-auth/static/js/main.a3046a19.js.map"
   },
   "entrypoints": [
-    "static/css/main.1a8a0596.css",
-    "static/js/main.0a881f84.js"
+    "static/css/main.895d8623.css",
+    "static/js/main.a3046a19.js"
   ]
 }
