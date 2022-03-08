@@ -8,6 +8,7 @@ import {
 import { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
+import Tooltip from "./Tooltip"
 import "../button.css"
 
 const Signup = () => {
@@ -20,29 +21,31 @@ const Signup = () => {
   const [clicks, setClicks] = useState(0)
   const { signup } = useAuth()
   const navigate = useNavigate()
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_-])(?=.{6,})/
 
   const images = [
     {
       name: "AceHearts",
-      icon: <GiCardAceHearts size={34} />,
+      icon: <GiCardAceHearts size={36} />,
       value: "1",
       variant: "custom",
     },
     {
       name: "JackHearts",
-      icon: <GiCardJackHearts size={34} />,
+      icon: <GiCardJackHearts size={36} />,
       value: "2",
       variant: "custom",
     },
     {
       name: "KingHearts",
-      icon: <GiCardKingHearts size={34} />,
+      icon: <GiCardKingHearts size={36} />,
       value: "3",
       variant: "custom",
     },
     {
       name: "QueenHearts",
-      icon: <GiCardQueenHearts size={34} />,
+      icon: <GiCardQueenHearts size={36} />,
       value: "4",
       variant: "custom",
     },
@@ -51,10 +54,12 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      setImagePatternValue("")
-      setClicks(0)
       setLoading(false)
       return setError("Passwords Do Not Match")
+    }
+    if (!passwordRegex.test(passwordRef.current.value)) {
+      setLoading(false)
+      return setError("Weak Password")
     }
     if (clicks !== 4) {
       setImagePatternValue("")
@@ -96,8 +101,11 @@ const Signup = () => {
               <Form.Label> Password Confirmation </Form.Label>
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
-            <Form.Group>
-              <Form.Label> Image Pattern Password </Form.Label>
+            <Form.Group id="image-pattern-password">
+              <Form.Label className="d-flex align-items-center">
+                <div>Image Pattern Password </div>
+                <Tooltip />
+              </Form.Label>
               <ButtonGroup className="d-flex align-items-center justify-content-center w-70">
                 {images.map((image, idx) => (
                   <Button
@@ -122,7 +130,7 @@ const Signup = () => {
             <Button
               disabled={loading}
               variant="info"
-              className="w-100 mt-4"
+              className="w-100 mt-3"
               type="submit"
             >
               Sign Up
