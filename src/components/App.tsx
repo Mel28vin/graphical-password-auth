@@ -13,6 +13,7 @@ const App = () => {
       style={{ minHeight: "100vh" }}
     >
       <div className="w-100" style={{ maxWidth: "400px" }}>
+        <h1 className="mono-font text-center"> AICTE </h1>
         <Router>
           <AuthProvider>
             <Routes>

@@ -15,3 +15,18 @@
 .sans-font {
   font-family: var(--sans);
 }
+
+.custom-bg {
+  background-color: white;
+  color: white;
+}
+
+.custom-bg:active {
+  box-shadow: none !important;
+  transition: transform 0.7s;
+  transform: translateY(7px);
+}
+
+.custom-bg:focus {
+  box-shadow: none !important;
+}
