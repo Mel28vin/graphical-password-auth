@@ -51,6 +51,19 @@ const Signup = () => {
     },
   ]
 
+  const shuffle = (inputArray: any[]) => {
+    const array = inputArray
+    for (let i = array.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * i)
+      const temp = array[i]
+      array[i] = array[j]
+      array[j] = temp
+    }
+    return array
+  }
+
+  const [shuffledCards] = useState(shuffle(images))
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -107,7 +120,7 @@ const Signup = () => {
                 <Tooltip />
               </Form.Label>
               <ButtonGroup className="d-flex align-items-center justify-content-center w-70">
-                {images.map((image, idx) => (
+                {shuffledCards.map((image, idx) => (
                   <Button
                     key={image.value}
                     id={`image-${idx}`}
