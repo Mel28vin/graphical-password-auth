@@ -19,8 +19,9 @@ Modern Technologies including [React](https://reactjs.org/), [TypeScript](https:
 The user is required to signup with an email, text-password and a simple Graphical
 password pattern which consists of pressing any four playing cards (Ace, King, Queen and Jack) in some particular order
 (With / Without Repetition) to ensure maximum security. The front-end is built using [React](https://reactjs.org/) and
-[TypeScript](https://www.typescriptlang.org/) and a Serverless back-end Authentication service using [Firebase](https://
-firebase.google.com/). This project can be extended for complicated graphical passwords using the same methodology.
+[TypeScript](https://www.typescriptlang.org/) and a Serverless back-end Authentication service using
+[Firebase](https://firebase.google.com/). This project can be extended for complicated graphical passwords using the same
+methodology.
 
 ## Images
 
