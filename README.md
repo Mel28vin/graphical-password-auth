@@ -23,8 +23,7 @@ firebase.google.com/). This project can be extended for complicated graphical pa
 
 ## Images
 
-![Signup](./public/Signup.png)
-![Login](./public/Login.png)
+![Signup](./public/Signup.png) ![Login](./public/Login.png)
 
 ---
 
