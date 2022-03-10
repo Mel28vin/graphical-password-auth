@@ -13,7 +13,8 @@ https://techwithsam.me/graphical-password-auth/
 Graphical Password Authentication uses Images clicked in a specific pattern as a password. In this project, both
 the conventional text password is used along with the graphical password for extra security. The project is made using
 Modern Technologies including [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/),
-[React-Bootstrap](https://react-bootstrap.github.io/), [React-Router](https://reactrouterdotcom.fly.dev/) and [Firebase](https://firebase.google.com/).
+[React-Bootstrap](https://react-bootstrap.github.io/), [React-Router](https://reactrouterdotcom.fly.dev/) and
+[Firebase](https://firebase.google.com/).
 
 The user is required to signup with an email, text-password and a simple Graphical
 password pattern which consists of pressing any four playing cards (Ace, King, Queen and Jack) in some particular order
