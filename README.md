@@ -8,6 +8,10 @@
 
 https://techwithsam.me/graphical-password-auth/
 
+## Project PPT
+
+https://docs.google.com/presentation/d/1cQ52slrel3HPSdT0dQBVhukKgTAPodFg4E9f6rGK7G4/edit?usp=sharing
+
 ## Description
 
 Graphical Password Authentication uses Images clicked in a specific pattern as a password. In this project, both
